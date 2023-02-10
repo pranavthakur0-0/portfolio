@@ -1,0 +1,49 @@
+@import "../src/Home/base";
+:root{
+    --primary-backgound : #000000;
+    --primary-color : #ffffff;
+    --red-ghost-color : #ea3838;
+}
+*{
+    cursor: none;
+    margin: 0px;
+    padding: 0px;
+    @include mobile { 
+        cursor: default;
+      }
+}
+*,
+*::after,
+*::before{
+    box-sizing: inherit;
+}
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+    margin: 0px;
+    padding: 0px;
+}
+
+@font-face {
+    font-family: portfoliofont;
+    src: url(../font//GT-America-Standard-Medium-Trial.otf);
+  }
+
+
+  @font-face {
+    font-family: portfoliofontlight;
+    src: url(../font//GT-America-Standard-Light-Trial.otf);
+  }
+body{
+    font-family:"portfoliofont", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    background-color: black;
+    color: var(--primary-color);
+
+
+}
+::selection{
+    background-color: transparent;
+    text-shadow: 0 0 5px  #bdb77b, 0 0 15px  #dcca84;
+}

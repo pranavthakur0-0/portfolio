@@ -1,0 +1,26 @@
+@import "base";
+.work {
+  height: 200vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+  flex-direction: column;
+}
+.work-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  font-size: 43vw;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.space {
+  height: 50vh;
+  width: 100%;
+}

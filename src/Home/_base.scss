@@ -1,0 +1,43 @@
+
+
+// media aliases and breakpoints
+
+$screen-xs-max: 425px;
+$screen-sm-max: 768px;
+$screen-md-max: 1024px;
+$screen-gd-siz: 1190px;
+$screen-gd-max: 1191px;
+$screen-lg-max: 1440px;
+
+
+// media devices
+
+// media lt queries
+@mixin mobile {
+  @media screen and (max-width: #{$screen-xs-max}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: #{$screen-sm-max}) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media screen and (max-width: #{$screen-md-max}) {
+    @content;
+  }
+}
+
+@mixin max-laptop {
+  @media screen and (max-width: #{$screen-lg-max}) {
+    @content;
+  }
+}
+@mixin gallery {
+	@media screen and (max-width: #{$screen-lg-max}) {
+	  @content;
+	}
+  }

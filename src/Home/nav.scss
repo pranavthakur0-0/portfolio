@@ -1,0 +1,49 @@
+.nav {
+  z-index: 1;
+  height: fit-content;
+  padding: 2rem;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .say-hello {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    border: 1px solid white;
+    border-radius: 3rem;
+    font-size: 2.5rem;
+    font-family: "portfoliofontlight", sans-serif;
+    transition: 0.3s ease-in-out;
+  }
+  .say-hello:hover {
+    color: var(--primary-backgound);
+    background-color: var(--primary-color);
+  }
+  #ghost {
+    animation: moveupanddown 1s ease-in-out alternate-reverse infinite;
+    fill: white;
+  }
+  @keyframes moveupanddown {
+    0% {
+      transform: translateY(-5px);
+    }
+    100% {
+      transform: translateY(5px);
+    }
+  }
+
+  #ghost-eye-cover {
+    transition: transform 0.4s ease-in-out;
+  }
+  #ghost:hover {
+    fill: var(--red-ghost-color) !important;
+  }
+  #ghost:hover #ghost-eye-cover {
+    transform: translateY(9.5px);
+    fill: var(--red-ghost-color) !important;
+  }
+}
