@@ -39,7 +39,7 @@ $easeInOutQuint : cubic-bezier(0.86, 0.3, 0.37, 0.5);
     padding: 10vh 10vw;
     height: fit-content;
     color: var(--primary-backgound);
-    width: 100vw;
+    width: 100%;
     max-width: 100%;
     @include mobile { 
       padding: 5vh 5vw;
@@ -82,7 +82,7 @@ $easeInOutQuint : cubic-bezier(0.86, 0.3, 0.37, 0.5);
   .projects{
     z-index: 1;
     padding: 5vh 10vw;
-    width: 100vw;
+    width: 100%;
     color: var(--primary-backgound);
     & h2{
       font-weight: 300;

@@ -8,6 +8,7 @@ import "./horizontal.scss"
 import "./footer.scss"
 import { BsArrowDown } from "react-icons/bs";
 import { AiFillLinkedin } from "react-icons/ai";
+import Sectionicon from "./lottiefullerene";
 import { Link as Scroller} from 'react-scroll'
 
 
@@ -122,14 +123,14 @@ export default function Home(){
         let worksize = (1200 + inputworkpos.current.getBoundingClientRect().y)/25;
         if(worksize < 650)
         {
-            document.querySelector(".work-text").transition = "0s";
+            inputRef.current.style.transition = "0s";
         }
         else{
-            document.querySelector(".work-text").transition = "all 1s";
+            inputRef.current.style.transition = "all 1s";
         }
         if(worksize > 20 )
         {
-         document.querySelector(".work-text").style.fontSize = `${worksize-5}vw`
+            inputRef.current.style.fontSize = `${worksize-5}vw`
         }
         inputRef.current.style.position = "sticky";
         inputRef.current.style.top = 0;
@@ -246,7 +247,7 @@ useLayoutEffect(() => {
                     <div className="text">
                         <div className="wrapper">
                             <div>HELLO, I'M </div>
-                            <div className="name">PRANAV THAKUR</div>
+                            <div className="name"  onMouseEnter={svgEnter} onMouseLeave={textLeave} >PRANAV THAKUR</div>
                             <div>UNLEASHING</div>
                             <div>CREATIVITY</div>
                             <div >& CODE</div>  
@@ -260,8 +261,8 @@ useLayoutEffect(() => {
                                   d="
                                     M 50, 50
                                     m -37, 0
-                                    a 37,37 0 1,1 77,0
-                                    a 37,37 0 1,1 -77,0"/>
+                                    a 35,35 0 1,1 77,0
+                                    a 35,35 0 1,1 -77,0"/>
                               </defs>
                               <text font-size="17">
                                 <textPath xlinkHref="#circle">
@@ -346,10 +347,18 @@ useLayoutEffect(() => {
        </div>
 
        <section className="footer" id="footer" ref={scollToRef}>
-        <h2><span  onMouseEnter={whiteEnter} onMouseLeave={textLeave} >Wanna <br /> be starting <br /> something ?</span> </h2>
+        <div className="bigger-text"><div className="headline"  onMouseEnter={whiteEnter} onMouseLeave={textLeave} >Wanna <br /> be starting <br /> something ? <span> Feel free to reach out <br /> if you wanna collaborate with me <br /> or simply have a chat</span></div>
+        <div className="fullerene-div">
+                 <div className="wrapper">
+                 <Sectionicon className="fullerene"></Sectionicon>
+                 </div>
+        </div>
+
+         </div>
             <div className="email">
             <a href ="https://mail.google.com/mail/u/2/?ogbl#inbox?compose=DmwnWrRlQqWFLrFBspbswNqnWqBKDKRmWDkDwxbThpWwNsgcZfMrgHFBjQQHDVggVjkQgFNDSBHL" target="_blank" rel="noreferrer"> <div className="text"  onMouseEnter={textEnter} onMouseLeave={textLeave}>pranavthakur.work@gmail.com</div></a>
             </div>
+
             <div className="built-by" onMouseEnter={whiteEnter} onMouseLeave={textLeave}>
                 <a href="https://www.linkedin.com/feed/?trk=nav_logo" target="_blank" rel="noreferrer"><AiFillLinkedin  onMouseEnter={textEnter} onMouseLeave={textLeave} className="linkedin"></AiFillLinkedin> </a>
              Built by Pranav Thakur
