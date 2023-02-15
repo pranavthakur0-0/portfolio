@@ -7,9 +7,11 @@ import "./work.scss"
 import "./horizontal.scss"
 import "./footer.scss"
 import { BsArrowDown } from "react-icons/bs";
-import { AiFillLinkedin } from "react-icons/ai";
+import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import Sectionicon from "./lottiefullerene";
 import { Link as Scroller} from 'react-scroll'
+import { BsLink } from "react-icons/bs";
+
 
 
 export default function Home(){
@@ -233,10 +235,9 @@ useLayoutEffect(() => {
                     	c3.163-0.191,5.572-1.942,6.888-3.166l0.452-0.453c0.021-0.019,0.04-0.041,0.06-0.061l0.034-0.034
                     	c-0.007,0.007-0.015,0.014-0.021,0.02C71.666,63.771,71.892,63.307,71.916,62.782z"/>
                     </svg>
-
+                      <p>!!! Under Development !!! </p>
                     <Scroller  to="footer" spy={true} smooth={true}>
-                        
-              
+        
                     <div className="say-hello" onMouseEnter={svgEnter} onMouseLeave={textLeave} >
                         SAY HELLO
                     </div>
@@ -264,7 +265,7 @@ useLayoutEffect(() => {
                                     a 35,35 0 1,1 77,0
                                     a 35,35 0 1,1 -77,0"/>
                               </defs>
-                              <text font-size="17">
+                              <text fontSize="17">
                                 <textPath xlinkHref="#circle">
                                   Scroll-Down ** Scroll-Down **
                                 </textPath>
@@ -286,10 +287,10 @@ useLayoutEffect(() => {
            </section>
 
            <section className="question">
-            <div className="strip1"ref={strip1}>Sass - Reactjs - Nodejs - Git - Github - C++ - C - Javascript - AWS - NGNIX </div>
-            <div className="strip2"ref={strip2}>DataStructures - Algorithms - CompilerDesign - Networking - Database</div>
-            <div className="strip3"ref={strip3}>Hello there</div>
-            <div className="strip4"ref={strip4}>Hello there</div>
+            <div className="strip1"ref={strip1}>HTML - CSS - Javascript - C++ - C - AWS - NGNIX </div>
+            <div className="strip2"ref={strip2}>---- Here are my Skills ----</div>
+            <div className="strip3"ref={strip3}>DataStructures - Algorithms - CompilerDesign - Networking - Database</div>
+            <div className="strip4"ref={strip4}>Reactjs - Nodejs - Git - Github - Express JS - SCSS</div>
                 <div className="wrapper" onMouseEnter={textEnter} onMouseLeave={textLeave} >
                 *what the heck is a Software Engineer?
                 </div>
@@ -327,20 +328,64 @@ useLayoutEffect(() => {
             <div className="projects">
             <h2 onMouseEnter={svgEnter} onMouseLeave={whiteEnter}>Featured Projects</h2>
             <div className="wrapper">
-                <div className="img" id="img"></div>
+                <div className="img img-project1" id="img"></div>
                 <div className="desc">
-                    <div className="name">Todo App</div>
-                    <div className="about">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis nam expedita eaque neque qui tempore! Ex architecto quo voluptatibus mollitia, quasi modi suscipit necessitatibus vel minus. Officiis quod doloribus fugit.</div>
-                    <button onMouseEnter={backlessEnter} onMouseLeave={whiteEnter} className="visit">Visit It !!! </button>
+                    <div className="name">CyberSky Site</div>
+                    <div className="about">I designed and developed a website from scratch using React.js and Node.js. I created the website's frontend using React.js, leveraging its component-based architecture and virtual DOM to ensure optimal performance and efficient updates. Additionally, I developed a robust backend system using Node.js, using its event-driven and non-blocking I/O model to handle large volumes of data and requests. I integrated the backend with a MYSQL, ensuring seamless communication between the frontend and backend. </div>
+                    <div className="button">
+                        <button onMouseEnter={backlessEnter} onMouseLeave={whiteEnter} className="visit"
+                        onClick={(e)=>
+                        {
+                            window.open('https://www.cybrsky.com/');
+                        }}
+                        >Visit It&nbsp;&nbsp;<BsLink />  </button>
+                        </div>
                 </div>
             </div>
             <div className="wrapper">
                 <div className="desc">
-                    <div className="name">Todo App</div>
-                    <div className="about">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis nam expedita eaque neque qui tempore! Ex architecto quo voluptatibus mollitia, quasi modi suscipit necessitatibus vel minus. Officiis quod doloribus fugit.</div>
-                    <button onMouseEnter={backlessEnter} onMouseLeave={whiteEnter} className="visit">Visit It !!! </button>
+                    <div className="name">MERN Stack Auth with JWT and Cookies</div>
+                    <div className="about">Implemented user authentication using Node.js, JWT, and cookies for a React.js web application. Created a Node.js server with Express.js, a user model, and a database to store user information. Developed a React.js frontend with login and signup pages that send requests to the Node.js server for authentication.
+                                            Utilized JWT to generate and verify user authentication tokens and cookies to store them securely.
+                                            Ensured the security of user information by implementing encryption and other security best practices. </div>
+                        <div className="button">
+                        <button onMouseEnter={backlessEnter} onMouseLeave={whiteEnter} className="github"
+                      onClick={(e)=>
+                        {
+                            window.open('https://github.com/pranavthakur0-0/Nodejs-Auth-Frontend');
+                        }}><AiFillGithub /></button>
+                        <button onMouseEnter={backlessEnter} onMouseLeave={whiteEnter} className="github"
+                      onClick={(e)=>
+                        {
+                            window.open('https://github.com/pranavthakur0-0/Node.js-Auth-backend');
+                        }}>
+                        <AiFillGithub /></button>
+                        </div>
+                  
+                  
                 </div>
-                <div className="img" id="img"></div>
+                <div className="img img-project3" id="img"></div>
+            </div>
+            <div className="wrapper">
+            <div className="img img-project2" id="img"></div>
+                <div className="desc">
+                    <div className="name">Todo App</div>
+                    <div className="about">Created a functional ToDo app using ReactJS and IndexedDB for data storage. ReactJS is a popular JavaScript library for building user interfaces, while IndexedDB is a client-side storage mechanism that allows web applications to store large amounts of structured data locally. By combining these technologies, I were able to build a efficient ToDo app that can help users stay organized and manage their tasks effectively. </div>
+                        <div className="button">
+                        <button onMouseEnter={backlessEnter} onMouseLeave={whiteEnter} className="visit"
+                                                  onClick={(e)=>
+                                                    {
+                                                        window.open('https://todo-noddy.netlify.app/');
+                                                    }}
+                        >Visit It&nbsp;&nbsp;<BsLink />  </button>
+                        <button onMouseEnter={backlessEnter} onMouseLeave={whiteEnter} className="github"
+                            onClick={(e)=>
+                              {
+                                  window.open('https://github.com/pranavthakur0-0/todoapp');
+                              }}><AiFillGithub /></button>
+                        </div>
+                </div>
+      
             </div>
             </div>
             </div>

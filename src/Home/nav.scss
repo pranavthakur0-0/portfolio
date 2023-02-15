@@ -19,6 +19,7 @@
     font-family: "portfoliofontlight", sans-serif;
     transition: 0.3s ease-in-out;
   }
+
   .say-hello:hover {
     color: var(--primary-backgound);
     background-color: var(--primary-color);
@@ -45,5 +46,13 @@
   #ghost:hover #ghost-eye-cover {
     transform: translateY(9.5px);
     fill: var(--red-ghost-color) !important;
+  }
+
+  p{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 2rem;
+    font-family: "portfoliofontlight", sans-serif;
   }
 }

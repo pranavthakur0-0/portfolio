@@ -101,18 +101,34 @@ $easeInOutQuint : cubic-bezier(0.86, 0.3, 0.37, 0.5);
 
       .img{
         opacity: 0;
-        width: 50%;
+        width: 55%;
         height: 100%;
-        background-color: blue;
         transition: 0.4s;
         transition-delay: 1s;
         transform-origin: right;
+        border: 1px solid black;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
       }
+      .img-project1{
+        background-image: url(../img/project1.jpg);
+
+      }
+        .img-project2{
+        background-image: url(../img/project2.png);        
+      }
+
+      .img-project3{
+        background-image: url(../img/project3.jpg);        
+      }
+
       .desc{
         text-align: left;
         display: flex;
         flex-direction: column;
-        padding: 0rem 5rem 5vh 3rem;
+        padding: 0rem 0rem 5vh 3rem;
         justify-content: center;
         height: 100%;
         width: 50%;
@@ -124,19 +140,40 @@ $easeInOutQuint : cubic-bezier(0.86, 0.3, 0.37, 0.5);
         .about{
           font-family: portfoliofontlight;
         }
-        .visit{
-          border: none;
-          background-color: var(--primary-backgound);
-          color: var(--primary-color);
-          padding: 2.7rem 5rem;
+        .button{
           display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-top: 2rem;
-          position: relative;
-          width: fit-content;
-          height: 3rem;
+          gap: 2rem;
+          button{
+            height: 3rem;
+            font-size: 2rem;
+            margin-top: 2rem;
+            font-family: "portfoliofontlight", sans-serif;
+            border: none;
+          
+          }
+          .visit{
+            background-color: var(--primary-backgound);
+            color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 6rem;
+            width: 17rem;
+            position: relative;
+          }
+          .github{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 6rem;
+            width: 6rem;
+            font-size: 4rem;
+            border-radius: 50%;
+            background-color: var(--primary-backgound);
+            color: var(--primary-color);
+          }
         }
+       
       }
     }
   }

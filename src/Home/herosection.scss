@@ -9,6 +9,7 @@
   width: 30px;
   background-color: var(--primary-color);
   border-radius: 50%;
+  mix-blend-mode: difference;
   pointer-events: none;
   @include mobile { 
     display: none;
@@ -182,6 +183,7 @@
     mix-blend-mode: difference;
   }
   .strip1 {
+    border: 2px dashed black;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -189,14 +191,17 @@
     position: absolute;
     top: 47%;
     transform: rotate(25deg) translateX(10px);
+    padding-left: 70vh;
     transform-origin: 20% 40%;
     width: 300vw;
     height: 10rem;
     color: var(--primary-backgound);
     background-color: yellow;
-    font-size: 7rem;
+    font-size: 5rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   }
   .strip2 {
+    border: 2px dashed black;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -210,9 +215,11 @@
     color: var(--primary-backgound);
     background-color: yellow;
     z-index: 1;
-    font-size: 7rem;
+    font-size: 6rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   }
   .strip3 {
+    border: 2px dashed black;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -226,9 +233,11 @@
     height: 10rem;
     color: var(--primary-backgound);
     background-color: yellow;
-    font-size: 7rem;
+    font-size: 5rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   }
   .strip4 {
+    border: 2px dashed black;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -243,6 +252,7 @@
     left: -2500px;
     color: var(--primary-backgound);
     background-color: yellow;
-    font-size: 7rem;
+    font-size: 5rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   }
 }
