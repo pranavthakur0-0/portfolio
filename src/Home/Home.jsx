@@ -129,22 +129,22 @@ export default function Home(){
             backgroundColor : "white",
             mixBlendMode: "difference"
         },
-        backlessEnter : {
-            height : 50,
-            width : 50,
-            x : mouse.x - 25,
-            y : mouse.y - 25,
-            border : "white 2px solid",
-            backgroundColor : "black",
-            mixBlendMode: "difference"
-        },
+        // backlessEnter : {
+        //     height : 50,
+        //     width : 50,
+        //     x : mouse.x - 25,
+        //     y : mouse.y - 25,
+        //     border : "white 2px solid",
+        //     backgroundColor : "black",
+        //     mixBlendMode: "difference"
+        // },
              //onMouseEnter={textEnter} onMouseLeave={textLeave} 
     }
     const textEnter  = ()=> setcursorvariant("text");
     const textLeave  = ()=> setcursorvariant("default");
     const svgEnter = ()=> setcursorvariant("svg");
     const whiteEnter = ()=> setcursorvariant("backwhite");
-    const backlessEnter = () => setcursorvariant("backlessEnter"); 
+    // const backlessEnter = () => setcursorvariant("backlessEnter"); 
 
     const inputRef = useRef();
     const inputworkpos = useRef();
