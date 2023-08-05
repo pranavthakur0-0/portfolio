@@ -9,7 +9,7 @@ $easeInOutQuint : cubic-bezier(0.86, 0.3, 0.37, 0.5);
   flex-direction: column;
   align-items: center;
   position: sticky;
-  .line{
+  & .line{
     width: 2px;
     background-color: white;
     transition: width 0.3s ease-in-out;
@@ -24,19 +24,21 @@ $easeInOutQuint : cubic-bezier(0.86, 0.3, 0.37, 0.5);
   width: 100%;
   display: flex;
   align-items: center;
-  .expand{
+  & .expand{
     position: absolute;
     transform: translateY(-100px);
     transition: height 0.2s ease-out , width 0.1s $easeInOutQuint;
     background-color: var(--primary-color);
   }
-  .expand-inner{
+  & .expand-inner{
+    padding: 0rem 10rem;
+    width: 100%;
     z-index: 9;
+    padding-bottom: 10vh;
     position: relative;
-  .intern{
+  & .intern{
     position: relative;
     z-index: 1;
-    padding: 10vh 10vw;
     height: fit-content;
     color: var(--primary-backgound);
     width: 100%;
@@ -51,24 +53,23 @@ $easeInOutQuint : cubic-bezier(0.86, 0.3, 0.37, 0.5);
       width: fit-content;
     }
       & ul{
-        padding-top: 3vw;
- 
         & li{
           font-size: 4vh;
           display: flex;
           gap: 15vw;
-          padding: 4rem 0rem;
+          padding: 2rem 0rem;
           padding-left: 3vw;
           border-bottom: 1px solid var(--primary-backgound);
           border-top: 1px solid var(--primary-backgound);
         }
-        .li_exp_first{
+        & .li_exp_first{
           border-bottom: 0px;
         }
-        .postition{
+       & .postition{
           font-size: 7rem;
         }
-        .duration{
+        & .duration{
+          padding-top: 1rem;
           & span:first-child{
             font-size: 3rem;
           }
@@ -77,105 +78,64 @@ $easeInOutQuint : cubic-bezier(0.86, 0.3, 0.37, 0.5);
           }
         }
     }
+    & img{
+      top: 50%;
+      left: 90%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      height: 20rem;
+      width: 20rem;
+    }
 
   }
-  .projects{
+  & .projects{
     z-index: 1;
-    padding: 5vh 10vw;
     width: 100%;
     color: var(--primary-backgound);
     & h2{
+      padding-top: 15rem;
       font-weight: 300;
       font-family:"portfoliofont", sans-serif;
       font-size: 7vw;
       width: fit-content;
-      padding-bottom:3vh;
+      padding-bottom: 5vh;
     }
-    .wrapper{
-      gap: 3rem;
-      height: 70vh;
-      gap: 5vh;
+    & .wrapper{
+      position: relative;
+      height: fit-content;
+      gap: 3vh;
       width: 100%;
       display: flex;
       padding-bottom: 20vh;
-
-      .img{
-        opacity: 0;
-        width: 55%;
-        height: 100%;
-        transition: 0.4s;
-        transition-delay: 1s;
-        transform-origin: right;
-        border: 1px solid black;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
+      display: flex;
+      flex-direction: column;
+      & .item{
+        width: 100%;
+        border-bottom: 1px solid black;
+        font-size: 4rem;
+        padding: 2rem;
+        transition: 0.3s ease-in-out;
       }
-      .img-project1{
-        background-image: url(../img/project1.jpg);
-
+      & .item:hover{
+        transform: scale(1.1);
       }
-        .img-project2{
-        background-image: url(../img/project2.png);        
-      }
-
-      .img-project3{
-        background-image: url(../img/project3.jpg);        
-      }
-
-      .desc{
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        padding: 0rem 0rem 5vh 3rem;
-        justify-content: center;
-        height: 100%;
-        width: 50%;
-        font-size: 2vh;
-        .name{
-          font-size: 5vh;
-          padding-bottom: 1rem;
-        }
-        .about{
-          font-family: portfoliofontlight;
-        }
-        .button{
-          display: flex;
-          gap: 2rem;
-          button{
-            height: 3rem;
-            font-size: 2rem;
-            margin-top: 2rem;
-            font-family: "portfoliofontlight", sans-serif;
-            border: none;
-          
+      & .turbu{
+          position: absolute;
+          height: 40rem;
+          width: 55%;
+          top: calc(25% - 10vh);
+          transform: translateY(-50%);
+          right: -5%;
+          & img{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            height: 100%;
+            width: 100%;
+            object-fit : cover;
+            filter: url(#noisesd);
+            opacity: 0;
           }
-          .visit{
-            background-color: var(--primary-backgound);
-            color: var(--primary-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 6rem;
-            width: 17rem;
-            position: relative;
-          }
-          .github{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 6rem;
-            width: 6rem;
-            font-size: 4rem;
-            border-radius: 50%;
-            background-color: var(--primary-backgound);
-            color: var(--primary-color);
-          }
-        }
-       
+       }
       }
     }
-  }
   }
 }

@@ -38,14 +38,24 @@ body{
     font-family:"portfoliofont", sans-serif;
     font-weight: 400;
     line-height: 1.6;
-    background-color: black;
     color: var(--primary-color);
     max-width: 100%;
     width: 99vw;
-
-
+    background-color: black;
 }
 ::selection{
     background-color: transparent;
     text-shadow: 0 0 5px  #bdb77b, 0 0 15px  #dcca84;
+}
+
+.main_container_wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & .max_width{
+        position: relative;
+        width: 100%;
+        max-width: 1440px;
+    }
 }

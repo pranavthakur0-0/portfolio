@@ -1,7 +1,7 @@
 .nav {
   z-index: 1;
   height: fit-content;
-  padding: 2rem;
+  padding: 1rem 2rem;
   width: 100%;
   position: absolute;
   display: flex;
@@ -13,21 +13,23 @@
     justify-content: center;
     align-items: center;
     padding: 1rem 2rem;
-    border: 1px solid white;
+    color: black;
+    border: 1px solid black;
     border-radius: 3rem;
-    font-size: 2.5rem;
+    font-size: 1.3rem;
     font-family: "portfoliofontlight", sans-serif;
     transition: 0.3s ease-in-out;
   }
 
   .say-hello:hover {
-    color: var(--primary-backgound);
-    background-color: var(--primary-color);
+    color: var(--primary-color);
+    background-color: var(--primary-backgound);
   }
   #ghost {
+    fill: var(--red-ghost-color);
     animation: moveupanddown 1s ease-in-out alternate-reverse infinite;
-    fill: white;
   }
+
   @keyframes moveupanddown {
     0% {
       transform: translateY(-5px);
@@ -38,6 +40,7 @@
   }
 
   #ghost-eye-cover {
+    fill: var(--red-ghost-color);
     transition: transform 0.4s ease-in-out;
   }
   #ghost:hover {

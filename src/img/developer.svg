@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-b82b26f5-e8a5-4f2c-8ed0-f9c8721512f5" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 105.18 20.71">
+  <defs>
+    <style>
+      .uuid-5f0771c7-8dac-461a-aa73-4a5c07aa6925 {
+        fill: #fff;
+        font-family: GTAmerica-Medium, 'GT America';
+        font-size: 18px;
+        font-weight: 500;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .uuid-7f86fcb2-f51d-4e7f-a830-670aa66a3c03 {
+        letter-spacing: 0em;
+      }
+
+      .uuid-142bedc3-dd7d-4b82-984b-27a5b9f6d325 {
+        letter-spacing: -.03em;
+      }
+    </style>
+  </defs>
+  <text class="uuid-5f0771c7-8dac-461a-aa73-4a5c07aa6925" transform="translate(.5 15.89)"><tspan x="0" y="0">D</tspan><tspan class="uuid-7f86fcb2-f51d-4e7f-a830-670aa66a3c03" x="13.05" y="0">E</tspan><tspan x="24.23" y="0">VE</tspan><tspan class="uuid-142bedc3-dd7d-4b82-984b-27a5b9f6d325" x="46.78" y="0">L</tspan><tspan x="56.05" y="0">OPER</tspan></text>
+</svg>

@@ -1,25 +1,54 @@
 
-import { useLayoutEffect, useState, useRef } from "react"
+import { useLayoutEffect, useState, useRef, useEffect } from "react"
 import { motion } from "framer-motion";
 import "./herosection.scss"
 import "./nav.scss"
 import "./work.scss"
 import "./horizontal.scss"
 import "./footer.scss"
-import { BsArrowDown } from "react-icons/bs";
-import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
+import "./eye_fun.scss"
+import { AiFillLinkedin } from "react-icons/ai";
 import Sectionicon from "./lottiefullerene";
 import { Link as Scroller} from 'react-scroll'
-import { BsLink } from "react-icons/bs";
-
+import Creative from "../img/developer.svg"
+import Developer from "../img/CREATIVE.svg"
+import data from "../Home/data.json"
 
 
 export default function Home(){
+    const [image, setimage] = useState(null);
     const scollToRef = useRef();
     const [mouse, setmouse] = useState({
         x: 0,
         y: 0
     });
+
+    const addHover = (item)=>{
+        setimage(null);
+        setimage(item.img);
+    }
+    const removeHover = ()=>{
+       setimage(null);
+    }
+    const imageRef = useRef();
+
+    const fadeInTimeoutRef = useRef(null);
+    useEffect(() => {
+        if (image) {
+          imageRef.current.style.transition = 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out';
+          if (imageRef.current.style.opacity !== '0') {
+            imageRef.current.style.opacity = 0;
+          }
+          if (fadeInTimeoutRef.current) {
+            clearTimeout(fadeInTimeoutRef.current);
+          }
+          fadeInTimeoutRef.current = setTimeout(() => {
+            imageRef.current.style.opacity = 1;
+            imageRef.current.style.transform = 'translate(2%, 2%)'; 
+          }, 200);
+        }
+      }, [image]);
+
     const [cursorvariant, setcursorvariant] = useState("default");
 
     useLayoutEffect(()=>
@@ -41,6 +70,9 @@ export default function Home(){
     const strip2 = useRef();
     const strip3 = useRef();
     const strip4 = useRef();
+
+    const refSvgOne = useRef();
+    const refSvgTwo = useRef();
     
     useLayoutEffect(()=>
     {
@@ -118,8 +150,39 @@ export default function Home(){
     const inputworkpos = useRef();
 
   
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            refSvgOne.current.style.animation = "none";
+            refSvgTwo.current.style.animation = "none";
+            refSvgTwo.current.style.transition = "none";
+            refSvgOne.current.style.transition = "none";
+            refSvgTwo.current.style.animationDelay = "none";
+            refSvgOne.current.style.opacity = `1`;
+            refSvgTwo.current.style.opacity = `1`;
+            refSvgOne.current.style.left = `${40}%`;
+            refSvgTwo.current.style.right = `${30}%`;
+        }, 1500);
+    
+        return () => {
+            clearTimeout(timeoutId);
+        };
+    }, []);
+    
+
     const scrollHandler = () => {
         const scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
+        if(scrollPos > 400){
+            document.body.style.backgroundColor = "black";
+            document.body.style.transition = "0.3s ease-in-out";
+        }else{
+            document.body.style.backgroundColor = "white";
+            document.body.style.transition = "0.3s ease-in-out";
+        }
+        
+        const SvgImg = Math.round(scrollPos*0.1);
+        refSvgOne.current.style.transform=`translateX(${SvgImg}px)`;
+        refSvgTwo.current.style.transform =`translateX(${-SvgImg}px)`;
+
       if(inputworkpos.current.getBoundingClientRect().y< 0 && inputworkpos.current.getBoundingClientRect().bottom > 50)
       {
         let worksize = (1200 + inputworkpos.current.getBoundingClientRect().y)/25;
@@ -179,7 +242,7 @@ export default function Home(){
       if(expandheight === "100vh")
       {
         expand.style.height =  `${(document.getElementById("expand-wrapper").getBoundingClientRect().height)}px`;
-        expand.style.width = "100vw";
+        expand.style.width = "100%";
         projectimg.forEach(function(child)
         {
             child.style.opacity = "1";
@@ -211,11 +274,11 @@ useLayoutEffect(() => {
       };
     },[]);
     return (<>
-
-
                 <nav className="nav">
-                    <svg  onMouseEnter={svgEnter} onMouseLeave={textLeave}  id="ghost" version="1.1" xmlns="http://www.w3.org/2000/svg"xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                    	 width="70.433px" height="120.743px" viewBox="0 0 127.433 132.743" enableBackground="new 0 0 127.433 132.743"
+                    <div className="Ghostwrapper" onMouseEnter={svgEnter} onMouseLeave={textLeave} >
+
+                 
+                <svg id="ghost" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50.433px" viewBox="0 0 127.433 132.743"
                     	 xmlSpace="preserve">
                     <path  d="M116.223,125.064c1.032-1.183,1.323-2.73,1.391-3.747V54.76c0,0-4.625-34.875-36.125-44.375
                     	s-66,6.625-72.125,44l-0.781,63.219c0.062,4.197,1.105,6.177,1.808,7.006c1.94,1.811,5.408,3.465,10.099-0.6
@@ -234,8 +297,7 @@ useLayoutEffect(() => {
                     	c-0.001,0-0.002-0.001-0.003-0.001c2.221,1.871,4.536,2.88,6.912,2.986c0.333,0.014,0.67,0.012,1.007-0.01
                     	c3.163-0.191,5.572-1.942,6.888-3.166l0.452-0.453c0.021-0.019,0.04-0.041,0.06-0.061l0.034-0.034
                     	c-0.007,0.007-0.015,0.014-0.021,0.02C71.666,63.771,71.892,63.307,71.916,62.782z"/>
-                    </svg>
-                      <p>!!! Under Development !!! </p>
+                    </svg>   </div>
                     <Scroller  to="footer" spy={true} smooth={true}>
         
                     <div className="say-hello" onMouseEnter={svgEnter} onMouseLeave={textLeave} >
@@ -245,35 +307,18 @@ useLayoutEffect(() => {
                 </nav>
                 <motion.div variants={variants} animate={cursorvariant} className="cursor" />
                 <section className="hero-section">
-                    <div className="text">
-                        <div className="wrapper">
-                            <div>HELLO, I'M </div>
-                            <div className="name"  onMouseEnter={svgEnter} onMouseLeave={textLeave} >PRANAV THAKUR</div>
-                            <div>UNLEASHING</div>
-                            <div>CREATIVITY</div>
-                            <div >& CODE</div>  
+                    <div className="svg_container">
+                        <div className="overlay_svg">
+                            <span>CREATIVE </span>
+                            <span>DEVELOPER </span>
+                            <img style={{display : "hidden"}} onMouseEnter={svgEnter} onMouseLeave={whiteEnter} className="creator_img" ref={refSvgOne}  src={Creative} alt="creative" />
+                            <img style={{display : "hidden"}} onMouseEnter={svgEnter} onMouseLeave={whiteEnter} className="developer_img" ref={refSvgTwo} src={Developer} alt="developer" />
                         </div>
+                        <div className="title">FULL STACK DEVELOPER</div>
                     </div>
-                    <div className="arrow">
-                        <div className="iconarrow"><BsArrowDown onMouseEnter={svgEnter} onMouseLeave={textLeave} /></div>
-                            <svg viewBox="0 0 100 100" width="100" height="100" className="scroll-ani">
-                              <defs>
-                                <path id="circle"
-                                  d="
-                                    M 50, 50
-                                    m -37, 0
-                                    a 35,35 0 1,1 77,0
-                                    a 35,35 0 1,1 -77,0"/>
-                              </defs>
-                              <text fontSize="17">
-                                <textPath xlinkHref="#circle">
-                                  Scroll-Down ** Scroll-Down **
-                                </textPath>
-                              </text>
-                            </svg>
-                    </div>
-                  
+               
                 </section>
+
                 <section  className="hello">
                     <div className="hello-svgline">
                     <svg id="ekhzpFtnB071" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
@@ -300,6 +345,7 @@ useLayoutEffect(() => {
 
 
 
+
 {    /*work section start from here */ }
        
 
@@ -319,74 +365,40 @@ useLayoutEffect(() => {
             <div className="expand-inner">
 
             <div className="intern">
-                <h2 onMouseEnter={svgEnter} onMouseLeave={whiteEnter}>Worked As</h2>
+                <h2 >Experience</h2>
                     <ul className="exp">
                         <li className="li_exp_first"><div className="postition">Intern</div> <div className="duration"><span>At CyberSky</span> <br /><span> From 20th June 2022 to 30th Dec 2022</span></div></li>
                         <li className="li_exp"><div className="duration">Open to Work !!!</div></li>
                     </ul>
+                    <img src={"https://res.cloudinary.com/dc1ilhan2/image/upload/v1691235538/Screenshot_2023-08-05_at_5.04.43_PM_sobhbc.png"} alt="" />
             </div>
             <div className="projects">
-            <h2 onMouseEnter={svgEnter} onMouseLeave={whiteEnter}>Featured Projects</h2>
-            <div className="wrapper">
-                <div className="img img-project1" id="img"></div>
-                <div className="desc">
-                    <div className="name">CyberSky Site</div>
-                    <div className="about">I designed and developed a website from scratch using React.js and Node.js. I created the website's frontend using React.js, leveraging its component-based architecture and virtual DOM to ensure optimal performance and efficient updates. Additionally, I developed a robust backend system using Node.js, using its event-driven and non-blocking I/O model to handle large volumes of data and requests. I integrated the backend with a MYSQL, ensuring seamless communication between the frontend and backend. </div>
-                    <div className="button">
-                        <button onMouseEnter={backlessEnter} onMouseLeave={whiteEnter} className="visit"
-                        onClick={(e)=>
-                        {
-                            window.open('https://www.cybrsky.com/');
-                        }}
-                        >Visit It&nbsp;&nbsp;<BsLink />  </button>
-                        </div>
-                </div>
-            </div>
-            <div className="wrapper">
-                <div className="desc">
-                    <div className="name">MERN Stack Auth with JWT and Cookies</div>
-                    <div className="about">Implemented user authentication using Node.js, JWT, and cookies for a React.js web application. Created a Node.js server with Express.js, a user model, and a database to store user information. Developed a React.js frontend with login and signup pages that send requests to the Node.js server for authentication.
-                                            Utilized JWT to generate and verify user authentication tokens and cookies to store them securely.
-                                            Ensured the security of user information by implementing encryption and other security best practices. </div>
-                        <div className="button">
-                        <button onMouseEnter={backlessEnter} onMouseLeave={whiteEnter} className="github"
-                      onClick={(e)=>
-                        {
-                            window.open('https://github.com/pranavthakur0-0/Nodejs-Auth-Frontend');
-                        }}><AiFillGithub /></button>
-                        <button onMouseEnter={backlessEnter} onMouseLeave={whiteEnter} className="github"
-                      onClick={(e)=>
-                        {
-                            window.open('https://github.com/pranavthakur0-0/Node.js-Auth-backend');
-                        }}>
-                        <AiFillGithub /></button>
-                        </div>
-                  
-                  
-                </div>
-                <div className="img img-project3" id="img"></div>
-            </div>
-            <div className="wrapper">
-            <div className="img img-project2" id="img"></div>
-                <div className="desc">
-                    <div className="name">Todo App</div>
-                    <div className="about">Created a functional ToDo app using ReactJS and IndexedDB for data storage. ReactJS is a popular JavaScript library for building user interfaces, while IndexedDB is a client-side storage mechanism that allows web applications to store large amounts of structured data locally. By combining these technologies, I were able to build a efficient ToDo app that can help users stay organized and manage their tasks effectively. </div>
-                        <div className="button">
-                        <button onMouseEnter={backlessEnter} onMouseLeave={whiteEnter} className="visit"
-                                                  onClick={(e)=>
-                                                    {
-                                                        window.open('https://todo-noddy.netlify.app/');
-                                                    }}
-                        >Visit It&nbsp;&nbsp;<BsLink />  </button>
-                        <button onMouseEnter={backlessEnter} onMouseLeave={whiteEnter} className="github"
-                            onClick={(e)=>
-                              {
-                                  window.open('https://github.com/pranavthakur0-0/todoapp');
-                              }}><AiFillGithub /></button>
-                        </div>
-                </div>
-      
-            </div>
+            <h2>Featured Projects</h2>
+                <div className="wrapper">
+
+                        {data ? data.map((item)=>{
+                            return  <div  onMouseEnter={() => {addHover(item); svgEnter()}} onMouseLeave={()=>{removeHover(); whiteEnter()}} className="item">
+                           { item.title}
+                       </div>
+
+                        }) : null}
+                       <div className="turbu">
+                        
+                       <svg>
+                       <defs>
+                        <filter id="noisesd" x="0%" y="0%" width="100%" height="100%">
+                        <feTurbulence id="turbwave" type="fractalNoise" baseFrequency="0.03" numOctaves="2" result="turbulence_3" data-filterId="3" >
+                        <animate xlinkHref="#turbwave" attributeName="baseFrequency" dur="15s" keyTimes="0;1;1"
+                                 values="0.01 0.02;0.02 0.04;0.01 0.02" repeatCount="indefinite"></animate>
+                        </feTurbulence>
+                
+                        <feDisplacementMap xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" in2="turbulence_3" scale="15" />
+                        </filter>
+                        </defs>
+                        </svg>
+                             {image ?  <img ref={imageRef} src={image} alt="" /> : null}      
+                       </div>
+               </div>
             </div>
             </div>
        </div>
