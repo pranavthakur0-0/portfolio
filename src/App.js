@@ -1,22 +1,4 @@
-// import './base.scss';
-// import Home from './Home/Home';
-// import LoadUp from "./LoadUp.jsx"
-// function App() {
-  
-//   return (
-//   <>
-//     <div className="main_container_wrapper">
-//       <div className="max_width">
-//           <LoadUp></LoadUp>
-//           <Home></Home>
-//       </div>
-//     </div>
 
-//   </>
-//   );
-// }
-
-//  export default App;
  import { useEffect, useState } from 'react';
  import './base.scss';
  import Home from './Home/Home';
@@ -41,7 +23,7 @@
    useEffect(() => {
      const timer = setTimeout(() => {
        setShowLoadUp(false);
-     }, 3200);
+     }, 4000);
 
      return () => clearTimeout(timer);
    }, []);

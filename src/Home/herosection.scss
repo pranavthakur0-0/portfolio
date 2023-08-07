@@ -4,6 +4,28 @@
 a {
   text-decoration: none;
 }
+
+
+@mixin text-split-animation{
+  transform: translateY(9rem);
+  animation: fade_in_landing_page 1s ease-in-out forwards;
+  opacity: 0;
+  @keyframes fade_in_landing_page {
+      0%{
+        opacity: 0;
+          transform: translateY(9rem);
+      }
+      100%{
+        opacity: 1;
+          transform: translateY(0rem);
+      }
+
+  }
+}
+
+
+
+
 .cursor {
   z-index: 9999;
   top: 0px;
@@ -37,49 +59,30 @@ a {
     }
     & .overlay_svg{
       color: black;
-      & span{
+      & .text-wrap{
         position: absolute;
-        font-size: 20rem;
-      }
-      & span:first-child{
         top: 20%;
-        left: -5%;
-    
+        padding-left: 5rem;
+        font-size: 10rem;
+        line-height: 10rem;
+        font-family: portfoliofontlight;
       }
-      & span:nth-child(2){
-        top: 40%;
-        left: 40%;
+      & .para-landing{
+        z-index: 20;
+        position: absolute;
+        bottom: 5rem;
+        padding-left: 5rem;
+        width: 50%;
+        font-size: 1.7rem;
+        line-height: 3rem;
+        font-family: portfoliofontlight;
       }
       & img{
         display: none;
       }
-
-      @keyframes fade_in_left {
-        0%{
-          opacity: 0;
-          left: 60%;
-        }
-        100%{
-          opacity: 1;
-          left: 40%;
-        }
-        
+      & .para-landing{
+        @include text-split-animation;
       }
-    @keyframes fade_in_right {
-      0%{
-        opacity: 0;
-        right: 50%;
-      }
-      100%{
-        opacity: 1;
-        right: 30%;
-      }
-      }
-    }
-    & .title{
-      position: absolute;
-      bottom: 0px;
-      color: black;
     }
   }
   }

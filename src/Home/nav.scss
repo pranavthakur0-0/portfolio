@@ -1,5 +1,5 @@
 .nav {
-  z-index: 1;
+  z-index: 100;
   height: fit-content;
   padding: 1rem 2rem;
   width: 100%;
@@ -7,6 +7,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  animation: 0.5s fade_in_load ease-in-out forwards;
+  transform: translateY(15px);
+  @keyframes fade_in_load {
+    0%{
+      transform: translateY(15px);
+      opacity: 0;
+    }
+    100%{
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+  
+
   .say-hello {
     width: fit-content;
     display: flex;
@@ -26,7 +40,9 @@
     background-color: var(--primary-backgound);
   }
   #ghost {
-    fill: var(--red-ghost-color);
+    fill: white;
+    stroke: black;
+    stroke-width: 2px;
     animation: moveupanddown 1s ease-in-out alternate-reverse infinite;
   }
 
@@ -40,15 +56,23 @@
   }
 
   #ghost-eye-cover {
-    fill: var(--red-ghost-color);
+    stroke: white;
+    fill: white;
     transition: transform 0.4s ease-in-out;
+    transform: translateY(-2px);
   }
   #ghost:hover {
     fill: var(--red-ghost-color) !important;
+    stroke:var(--red-ghost-color);
   }
   #ghost:hover #ghost-eye-cover {
-    transform: translateY(9.5px);
+    transform: translateY(6px);
+    stroke: var(--red-ghost-color);
     fill: var(--red-ghost-color) !important;
+  }
+  #smile_width{
+    stroke-width: 0px !important;
+    stroke: black !important;
   }
 
   p{

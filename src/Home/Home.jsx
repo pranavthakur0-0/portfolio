@@ -2,6 +2,7 @@
 import { useLayoutEffect, useState, useRef, useEffect } from "react"
 import { motion } from "framer-motion";
 import "./herosection.scss"
+import "./landingPageAnimation.scss"
 import "./nav.scss"
 import "./work.scss"
 import "./horizontal.scss"
@@ -10,8 +11,6 @@ import "./eye_fun.scss"
 import { AiFillLinkedin } from "react-icons/ai";
 import Sectionicon from "./lottiefullerene";
 import { Link as Scroller} from 'react-scroll'
-import Creative from "../img/developer.svg"
-import Developer from "../img/CREATIVE.svg"
 import data from "../Home/data.json"
 
 
@@ -171,13 +170,36 @@ export default function Home(){
 
     const scrollHandler = () => {
         const scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
-        if(scrollPos > 400){
-            document.body.style.backgroundColor = "black";
-            document.body.style.transition = "0.3s ease-in-out";
-        }else{
-            document.body.style.backgroundColor = "white";
-            document.body.style.transition = "0.3s ease-in-out";
+        const elements = document.querySelectorAll(".white-Background");
+        const whiteBackgroundBottom = document.querySelector(".white-Background-bottom");
+        if (scrollPos > 500) {
+          document.body.style.backgroundColor = "black";
+          document.body.style.transition = "0.5s ease-in-out";
+          
+          elements.forEach(element => {
+            element.style.backgroundColor = "black";
+            element.style.transition = "0.5s ease-in-out";
+          });
+        
+          if (whiteBackgroundBottom) {
+            whiteBackgroundBottom.style.backgroundColor = "black";
+            whiteBackgroundBottom.style.transition = "0.5s ease-in-out";
+          }
+        } else {
+          document.body.style.backgroundColor = "white";
+          document.body.style.transition = "0.5s ease-in-out";
+          
+          elements.forEach(element => {
+            element.style.backgroundColor = "white";
+            element.style.transition = "0.5s ease-in-out";
+          });
+        
+          if (whiteBackgroundBottom) {
+            whiteBackgroundBottom.style.backgroundColor = "white";
+            whiteBackgroundBottom.style.transition = "0.5s ease-in-out";
+          }
         }
+        
         
         const SvgImg = Math.round(scrollPos*0.1);
         refSvgOne.current.style.transform=`translateX(${SvgImg}px)`;
@@ -278,7 +300,7 @@ useLayoutEffect(() => {
                     <div className="Ghostwrapper" onMouseEnter={svgEnter} onMouseLeave={textLeave} >
 
                  
-                <svg id="ghost" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50.433px" viewBox="0 0 127.433 132.743"
+                <svg id="ghost" version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50.433px" viewBox="0 0 127.433 132.743"
                     	 xmlSpace="preserve">
                     <path  d="M116.223,125.064c1.032-1.183,1.323-2.73,1.391-3.747V54.76c0,0-4.625-34.875-36.125-44.375
                     	s-66,6.625-72.125,44l-0.781,63.219c0.062,4.197,1.105,6.177,1.808,7.006c1.94,1.811,5.408,3.465,10.099-0.6
@@ -291,7 +313,7 @@ useLayoutEffect(() => {
                     <circle id="ghost-eye-cover" fill="#ffffff" cx="40.072" cy="44.5" r="7"/>
 
 
-                    <path fill="#000000" d="M71.916,62.782c0.05-1.108-0.809-2.046-1.917-2.095c-0.673-0.03-1.28,0.279-1.667,0.771
+                    <path id="smile_width" fill="#000000" d="M71.916,62.782c0.05-1.108-0.809-2.046-1.917-2.095c-0.673-0.03-1.28,0.279-1.667,0.771
                     	c-0.758,0.766-2.483,2.235-4.696,2.358c-1.696,0.094-3.438-0.625-5.191-2.137c-0.003-0.003-0.007-0.006-0.011-0.009l0.002,0.005
                     	c-0.332-0.294-0.757-0.488-1.235-0.509c-1.108-0.049-2.046,0.809-2.095,1.917c-0.032,0.724,0.327,1.37,0.887,1.749
                     	c-0.001,0-0.002-0.001-0.003-0.001c2.221,1.871,4.536,2.88,6.912,2.986c0.333,0.014,0.67,0.012,1.007-0.01
@@ -309,13 +331,76 @@ useLayoutEffect(() => {
                 <section className="hero-section">
                     <div className="svg_container">
                         <div className="overlay_svg">
-                            <span>CREATIVE </span>
-                            <span>DEVELOPER </span>
-                            <img style={{display : "hidden"}} onMouseEnter={svgEnter} onMouseLeave={whiteEnter} className="creator_img" ref={refSvgOne}  src={Creative} alt="creative" />
-                            <img style={{display : "hidden"}} onMouseEnter={svgEnter} onMouseLeave={whiteEnter} className="developer_img" ref={refSvgTwo} src={Developer} alt="developer" />
+                            <div className="text-wrap">
+                                <div className="creative" >
+                                <span className="text-split" style={{display : "flex", alignItems : 'center'}}>    FR
+                                <div className="eye_landing">
+                                    <div class="loader">
+                                        <div className="loadereyeDot"></div>
+                                        <span></span>
+                                    </div>
+                                </div>M</span>
+                                 <span className="text-split" style={{animationDelay : '0.2s'}}> &nbsp;CREATIVE</span></div>
+                               
+                                <div className="ideas">
+                                    <div className="white-Background"></div>
+                                    <span className="text-split" style={{animationDelay : '0.4s'}}>IDEAS </span>
+                                    <span className="text-split" style={{animationDelay : '0.6s'}}> &nbsp; TO </span>
+                                 </div>
+
+                                <div className="immersive">
+                                    <div className="white-Background"></div>
+                                    <span className="text-split" style={{animationDelay : '0.8s'}}>IMMERSIVE  </span>
+                                    <span className="text-split" style={{animationDelay : '1s'}}> &nbsp; DIGITAL </span>
+                                </div>
+                                <div className="journeys">
+                                <div className="white-Background"></div>
+                                    <span className="text-split" style={{animationDelay : '1s'}}>  JOURNEYS. </span>
+                                    <div className="white-Background-bottom"></div>
+                                </div>
+                            </div>
+                            <p className="para-landing">I'm Pranav Thakur, a Full-Stack Developer weaving intricate code to craft immersive digital experiences, where creativity meets functionality, and dreams come alive. Join me on this journey to explore limitless possibilities and witness the wonders of technology shaping tomorrow's world. </p>
+                            <img style={{display : "hidden"}} onMouseEnter={svgEnter} onMouseLeave={whiteEnter} className="creator_img" ref={refSvgOne}  src="" alt="creative" />
+                            <img style={{display : "hidden"}} onMouseEnter={svgEnter} onMouseLeave={whiteEnter} className="developer_img" ref={refSvgTwo} src="" alt="developer" />
                         </div>
-                        <div className="title">FULL STACK DEVELOPER</div>
                     </div>
+                    <div class="bubb_container">
+                            <div class="bubble">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="bubble">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="bubble">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="bubble">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="bubble">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
                
                 </section>
 
@@ -370,7 +455,6 @@ useLayoutEffect(() => {
                         <li className="li_exp_first"><div className="postition">Intern</div> <div className="duration"><span>At CyberSky</span> <br /><span> From 20th June 2022 to 30th Dec 2022</span></div></li>
                         <li className="li_exp"><div className="duration">Open to Work !!!</div></li>
                     </ul>
-                    <img src={"https://res.cloudinary.com/dc1ilhan2/image/upload/v1691235538/Screenshot_2023-08-05_at_5.04.43_PM_sobhbc.png"} alt="" />
             </div>
             <div className="projects">
             <h2>Featured Projects</h2>
