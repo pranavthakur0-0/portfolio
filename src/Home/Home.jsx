@@ -339,13 +339,13 @@ export default function Home(){
 
 };
 
-const debouncedscrollHandler = debounce(scrollHandler, 10);
+
 
 useLayoutEffect(() => {
     
-      window.addEventListener("scroll", debouncedscrollHandler, true);
+      window.addEventListener("scroll", scrollHandler, true);
       return () => {
-        window.removeEventListener("scroll", debouncedscrollHandler, true);
+        window.removeEventListener("scroll", scrollHandler, true);
       };
       // eslint-disable-next-line
     },[]);
