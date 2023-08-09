@@ -47,6 +47,9 @@ a {
   height: 100vh;
   display: flex;
   font-size: 3rem;
+  @include mobile{
+    height: 90vh;
+  }
   & .svg_container{
     overflow: hidden;
     height: 100%;
@@ -66,6 +69,11 @@ a {
         font-size: 10rem;
         line-height: 10rem;
         font-family: portfoliofontlight;
+        @include mobile{
+          padding-top: 8rem;
+          padding-left: 1rem;
+          line-height: 5rem;
+        }
       }
       & .para-landing{
         z-index: 20;
@@ -76,12 +84,20 @@ a {
         font-size: 1.7rem;
         line-height: 3rem;
         font-family: portfoliofontlight;
+        @include mobile{
+          line-height: 2rem;
+        }
       }
       & img{
         display: none;
       }
       & .para-landing{
         @include text-split-animation;
+        @include mobile { 
+          font-size: 1rem;
+          width: 100%;
+          padding: 0rem 1rem;
+        }
       }
     }
   }
@@ -134,14 +150,22 @@ a {
   justify-content: center;
   flex-direction: column;
   overflow: hidden;
-  .wrapper {
-
+  @include mobile{
+   padding-top: 9rem;
+  }
+ & .wrapper {
     mix-blend-mode: difference;
     width: 30%;
     font-size: 4.5vw;
     text-align: center;
+    @include mobile{
+      font-size: 3rem;
+      padding: 1rem;
+      padding-top: 3vh;
+      width: 100%;
+    }
   }
-  p {
+  & p {
     height: 100vh;
     padding-top: 50vh;
     font-size: 15px;
@@ -150,6 +174,14 @@ a {
     font-weight: 400;
     font-family: "portfoliofontlight", sans-serif;
     mix-blend-mode: difference;
+    @include mobile{
+      padding: 1rem;
+      padding-top: 4vh;
+      width: 100%;
+      font-size: 12px;
+      text-align: justify;
+      height: 100vh;
+    }
   }
   .strip1 {
     border: 2px dashed black;
@@ -170,6 +202,17 @@ a {
     z-index: 2;
     &:hover{
       z-index: 99;
+    }
+    @include mobile{
+      top: 65%;
+      padding-left: 10vw;
+      width: 130vw;
+      height: 5rem;
+      font-size: 1.8rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: clip;
+      text-align: left;
     }
   }
   .strip2 {
@@ -193,6 +236,18 @@ a {
     &:hover{
       z-index: 99;
     }
+    @include mobile{
+      top: 55%;
+      width: 130vw;
+      height: 5rem;
+      font-size: 1.8rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: clip;
+      text-align: center; 
+      transition: transform 0.1s ease;
+      will-change: transform;
+    }
   }
   .strip3 {
     border: 2px dashed black;
@@ -211,9 +266,22 @@ a {
     background-color: yellow;
     font-size: 5rem;
     box-shadow: rgba(0, 0, 0, 0.5) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-    z-index: 2;
+    z-index: 1;
     &:hover{
       z-index: 99;
+    }
+    @include mobile{
+      top: 62%;
+      left: -0%;
+      width: 130vw;
+      height: 5rem;
+      font-size: 1.8rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: clip;
+      text-align: center; 
+      transition: transform 0.1s ease;
+      will-change: transform;
     }
   }
   .strip4 {
@@ -237,6 +305,21 @@ a {
     z-index: 2;
     &:hover{
       z-index: 99;
+    }
+    @include mobile{
+      top: 77%;
+      left: -10%;
+      width: 130vw;
+      padding: 0px;
+      padding-right: 2vh;
+      height: 5rem;
+      font-size: 1.8rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: clip;
+      text-align: center; 
+      transition: transform 0.1s ease;
+      will-change: transform;
     }
   }
 }

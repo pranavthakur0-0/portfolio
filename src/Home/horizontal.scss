@@ -35,7 +35,11 @@ $easeInOutQuint : cubic-bezier(0.86, 0.3, 0.37, 0.5);
     width: 100%;
     z-index: 9;
     padding-bottom: 10vh;
+    overflow: hidden;
     position: relative;
+    @include mobile{
+      padding: 0rem 2rem;
+    }
   & .intern{
     position: relative;
     z-index: 1;
@@ -44,13 +48,16 @@ $easeInOutQuint : cubic-bezier(0.86, 0.3, 0.37, 0.5);
     width: 100%;
     max-width: 100%;
     @include mobile { 
-      padding: 5vh 5vw;
+      padding: 0rem;
     }
     & h2{
       font-weight: 300;
       font-family:"portfoliofont", sans-serif;
       font-size: 7vw;
       width: fit-content;
+      @include mobile{
+        font-size: 4rem;
+      }
     }
       & ul{
         & li{
@@ -61,20 +68,58 @@ $easeInOutQuint : cubic-bezier(0.86, 0.3, 0.37, 0.5);
           padding-left: 3vw;
           border-bottom: 1px solid var(--primary-backgound);
           border-top: 1px solid var(--primary-backgound);
+          @include mobile{
+            font-size: 3vh;
+          }
         }
         & .li_exp_first{
           border-bottom: 0px;
+          @include mobile{
+            display: flex;
+            flex-direction: column;
+            gap: 0rem;
+            padding: 0rem;
+ 
+          }
+        }
+        & .li_exp{
+          
+          & .duration{
+            width: 100%;
+            @include mobile{
+              text-align: center;
+            }
+          }
         }
        & .postition{
           font-size: 7rem;
+          @include mobile{
+            padding-top: 1rem;
+            font-size: 3rem;
+            line-height: 4rem;
+          }
         }
         & .duration{
           padding-top: 1rem;
+            @include mobile{
+              line-height: 2rem;
+              padding-top: 0.5rem;
+              padding-bottom: 1rem;
+            }
           & span:first-child{
             font-size: 3rem;
+            @include mobile{
+              font-size: 1.7rem;
+              font-family: portfoliofontlight;
+            }
           }
           & span:last-child{
             font-size: 2rem;
+            @include mobile{
+              margin-top: 0.3rem;
+              font-size: 1.3rem;
+              font-family: portfoliofontlight;
+            }
           }
         }
     }
@@ -99,6 +144,10 @@ $easeInOutQuint : cubic-bezier(0.86, 0.3, 0.37, 0.5);
       font-size: 7vw;
       width: fit-content;
       padding-bottom: 5vh;
+      @include mobile{
+        padding-top: 5rem;
+        font-size: 3.5rem;
+      }
     }
     & .wrapper{
       position: relative;
@@ -109,12 +158,19 @@ $easeInOutQuint : cubic-bezier(0.86, 0.3, 0.37, 0.5);
       padding-bottom: 20vh;
       display: flex;
       flex-direction: column;
+      @include mobile{
+        gap: 1vh;
+      }
       & .item{
         width: 100%;
         border-bottom: 1px solid black;
         font-size: 4rem;
         padding: 2rem;
         transition: 0.3s ease-in-out;
+        @include mobile{
+          font-size: 1.5rem;
+          padding: 2rem 1rem;
+        }
       }
       & .item:hover{
         transform: scale(1.1);
@@ -126,6 +182,9 @@ $easeInOutQuint : cubic-bezier(0.86, 0.3, 0.37, 0.5);
           top: calc(25% - 10vh);
           transform: translateY(-50%);
           right: -5%;
+          @include mobile{
+            top: calc(40% - 10vh);
+          }
           & img{
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
             height: 100%;
@@ -133,6 +192,10 @@ $easeInOutQuint : cubic-bezier(0.86, 0.3, 0.37, 0.5);
             object-fit : cover;
             filter: url(#noisesd);
             opacity: 0;
+            @include mobile{
+              height: 40%;
+              width: 100%;
+            }
           }
        }
       }

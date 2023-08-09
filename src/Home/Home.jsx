@@ -9,19 +9,20 @@ import "./horizontal.scss"
 import "./footer.scss"
 import "./eye_fun.scss"
 import { AiFillLinkedin } from "react-icons/ai";
-import Sectionicon from "./lottiefullerene";
 import { Link as Scroller} from 'react-scroll'
 import data from "../Home/data.json"
+import useIsMobile from "./CheckMobile";
+import Marquee from "react-fast-marquee";
 
 
 export default function Home(){
     const [image, setimage] = useState(null);
     const scollToRef = useRef();
+    const value = useRef(useIsMobile());
     const [mouse, setmouse] = useState({
         x: 0,
         y: 0
     });
-
     const addHover = (item)=>{
         setimage(null);
         setimage(item.img);
@@ -65,39 +66,9 @@ export default function Home(){
         }
     },[])
 
-    const strip1 = useRef();
-    const strip2 = useRef();
-    const strip3 = useRef();
-    const strip4 = useRef();
 
     const refSvgOne = useRef();
     const refSvgTwo = useRef();
-    
-    useLayoutEffect(()=>
-    {
-
-    
-        const parallax = e=>{
-            const scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
-           if(scrollPos > 1100)
-           {
-            let xx  =  (scrollPos-1800)*1.5;
-            let yy  = scrollPos-1400
-             strip1.current.style.transform=`translateX(${-xx}px) translateY(${-yy}px) rotate(25deg) `;
-             strip2.current.style.transform=`translateX(${xx*0.7}px) translateY(${-yy}px) rotate(02deg) `;
-             strip3.current.style.transform=`translateX(${-xx*0.5}px) translateY(${-yy*0.6}px) rotate(-5deg) `;
-             strip4.current.style.transform=`translateX(${xx*0.5}px) translateY(${-yy*0.5}px) rotate(-22deg) `;
-           }
-        }
-
-       
-        window.addEventListener("scroll", parallax);
-        return ()=>
-        {
-            window.removeEventListener("scroll", parallax);
-        }
-    },[])
-
     const variants ={
         default:{
             x : mouse.x - 15,
@@ -144,35 +115,106 @@ export default function Home(){
     const svgEnter = ()=> setcursorvariant("svg");
     const whiteEnter = ()=> setcursorvariant("backwhite");
     // const backlessEnter = () => setcursorvariant("backlessEnter"); 
-
-    const inputRef = useRef();
-    const inputworkpos = useRef();
-
-  
-    useEffect(() => {
-        const timeoutId = setTimeout(() => {
-            refSvgOne.current.style.animation = "none";
-            refSvgTwo.current.style.animation = "none";
-            refSvgTwo.current.style.transition = "none";
-            refSvgOne.current.style.transition = "none";
-            refSvgTwo.current.style.animationDelay = "none";
-            refSvgOne.current.style.opacity = `1`;
-            refSvgTwo.current.style.opacity = `1`;
-            refSvgOne.current.style.left = `${40}%`;
-            refSvgTwo.current.style.right = `${30}%`;
-        }, 1500);
-    
-        return () => {
-            clearTimeout(timeoutId);
+   
+    const debounce = (func, delay) => {
+        let timeoutId;
+        return (...args) => {
+          clearTimeout(timeoutId);
+          timeoutId = setTimeout(() => func(...args), delay);
         };
-    }, []);
+      };
+      const strip1 = useRef();
+      const strip2 = useRef();
+      const strip3 = useRef();
+      const strip4 = useRef();
+      const inputRef = useRef();
+      const inputworkpos = useRef();
+  
     
+      useEffect(() => {
+          const timeoutId = setTimeout(() => {
+              refSvgOne.current.style.animation = "none";
+              refSvgTwo.current.style.animation = "none";
+              refSvgTwo.current.style.transition = "none";
+              refSvgOne.current.style.transition = "none";
+              refSvgTwo.current.style.animationDelay = "none";
+              refSvgOne.current.style.opacity = `1`;
+              refSvgTwo.current.style.opacity = `1`;
+              refSvgOne.current.style.left = `${40}%`;
+              refSvgTwo.current.style.right = `${30}%`;
+          }, 1500);
+      
+          return () => {
+              clearTimeout(timeoutId);
+          };
+      }, []);
+
+      useEffect(()=>{
+        const isMobile = value.current.isMobile; // Assuming value.current.isMobile is available
+        if(isMobile){
+            const rotate1 = 20;
+            const rotate2 = 2;
+            const rotate3 = -5;
+            const rotate4 = -25;
+            strip1.current.style.transform = `rotate(${rotate1}deg)`;
+            strip2.current.style.transform = `rotate(${rotate2}deg)`;
+            strip3.current.style.transform = `rotate(${rotate3}deg)`;
+            strip4.current.style.transform = `rotate(${rotate4}deg)`;
+        }
+      },[])
+    
+      const parallax = () => {
+        const scrollPos = window.scrollY || window.pageYOffset;
+        const isMobile = value.current.isMobile; // Assuming value.current.isMobile is available
+            if (scrollPos > 1100 && !isMobile) {
+                const rotate1 = 25;
+                const rotate2 = 2;
+                const rotate3 = -5;
+                const rotate4 = -22;
+                const yOffset =  1400;
+                const xx = (scrollPos -  1800) * 1.5;
+                const yy = scrollPos - yOffset;
+                const translateX1 = -xx;
+                const translateY1 = -yy;
+                const translateX2 = xx * 0.7;
+                const translateY2 = -yy;
+                const translateX3 = -xx * 0.5;
+                const translateY3 = -yy * 0.6;
+                const translateX4 = xx * 0.5;
+                const translateY4 = -yy * 0.5;
+
+                strip1.current.style.transform = `translateX(${translateX1}px) translateY(${translateY1}px) rotate(${rotate1}deg)`;
+                strip2.current.style.transform = `translateX(${translateX2}px) translateY(${translateY2}px) rotate(${rotate2}deg)`;
+                strip3.current.style.transform = `translateX(${translateX3}px) translateY(${translateY3}px) rotate(${rotate3}deg)`;
+                strip4.current.style.transform = `translateX(${translateX4}px) translateY(${translateY4}px) rotate(${rotate4}deg)`;
+              }
+      };
+
+
+    
+      const debouncedParallax = debounce(parallax, 10);
+    
+      useLayoutEffect(() => {
+        window.addEventListener("scroll", debouncedParallax);
+        return () => {
+          window.removeEventListener("scroll", debouncedParallax);
+        };
+      }, [debouncedParallax]);
+
+
+
+
+    let lastScrollTop;
 
     const scrollHandler = () => {
         const scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
         const elements = document.querySelectorAll(".white-Background");
         const whiteBackgroundBottom = document.querySelector(".white-Background-bottom");
-        if (scrollPos > 500) {
+
+        const isScrollingUp = scrollPos < lastScrollTop;
+        lastScrollTop = scrollPos;
+
+        if (scrollPos > (value.current.isMobile ? 50 : 500)) {
           document.body.style.backgroundColor = "black";
           document.body.style.transition = "0.5s ease-in-out";
           
@@ -205,7 +247,7 @@ export default function Home(){
         refSvgOne.current.style.transform=`translateX(${SvgImg}px)`;
         refSvgTwo.current.style.transform =`translateX(${-SvgImg}px)`;
 
-      if(inputworkpos.current.getBoundingClientRect().y< 0 && inputworkpos.current.getBoundingClientRect().bottom > 50)
+      if((value.current.isMobile ? inputworkpos.current.getBoundingClientRect().y< 600 : inputworkpos.current.getBoundingClientRect().y< 0) || inputworkpos.current.getBoundingClientRect().bottom > 50)
       {
         let worksize = (1200 + inputworkpos.current.getBoundingClientRect().y)/25;
         if(worksize < 650)
@@ -217,21 +259,31 @@ export default function Home(){
         }
         if(worksize > 20 )
         {
-            inputRef.current.style.fontSize = `${worksize-5}vw`
+            inputRef.current.style.fontSize = `${worksize-(value.current.isMobile ? 15 : 5)}vw`
         }
         inputRef.current.style.position = "sticky";
-        inputRef.current.style.top = 0;
+        if (value.current.isMobile) {
+            if (!isScrollingUp) {
+              inputRef.current.style.top = '25%';
+            } else {
+              inputRef.current.style.top = '0%';
+            }
+          } else {
+            inputRef.current.style.top = "0%";
+          }
       }
       else
       {
+        
         inputRef.current.style.position = 'relative';
         inputRef.current.style.top = '';
       }
 
+
       const line = document.getElementById("line");
-      if(scrollPos > 3578)
+      if(scrollPos > (value.current.isMobile ? 1600 :3578))
       {
-        line.style.height = `${(scrollPos-3580)/2}px`;
+        line.style.height = `${(scrollPos-(value.current.isMobile ? 1450 :3588))/2}px`;
       }
       const expand = document.getElementById("expand");
     
@@ -246,7 +298,7 @@ export default function Home(){
     
       }
       else{
-         line.style.height = `${(scrollPos-3580)/2}px`;
+         line.style.height = `${(scrollPos-(value.current.isMobile ? 1400 :3588))/2}px`;
       }
     
       if(lineheight < 50 )
@@ -290,10 +342,12 @@ export default function Home(){
 
 
 useLayoutEffect(() => {
+    
       window.addEventListener("scroll", scrollHandler, true);
       return () => {
         window.removeEventListener("scroll", scrollHandler, true);
       };
+      // eslint-disable-next-line
     },[]);
     return (<>
                 <nav className="nav">
@@ -335,7 +389,7 @@ useLayoutEffect(() => {
                                 <div className="creative" >
                                 <span className="text-split" style={{display : "flex", alignItems : 'center'}}>    FR
                                 <div className="eye_landing">
-                                    <div class="loader">
+                                    <div className="loader">
                                         <div className="loadereyeDot"></div>
                                         <span></span>
                                     </div>
@@ -364,36 +418,36 @@ useLayoutEffect(() => {
                             <img style={{display : "hidden"}} onMouseEnter={svgEnter} onMouseLeave={whiteEnter} className="developer_img" ref={refSvgTwo} src="" alt="developer" />
                         </div>
                     </div>
-                    <div class="bubb_container">
-                            <div class="bubble">
+                    <div className="bubb_container">
+                            <div className="bubble">
                                 <span></span>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </div>
-                            <div class="bubble">
+                            <div className="bubble">
                                 <span></span>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </div>
-                            <div class="bubble">
+                            <div className="bubble">
                                 <span></span>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </div>
-                            <div class="bubble">
+                            <div className="bubble">
                                 <span></span>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </div>
-                            <div class="bubble">
+                            <div className="bubble">
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -417,10 +471,10 @@ useLayoutEffect(() => {
            </section>
 
            <section className="question">
-            <div className="strip1"ref={strip1}>HTML - CSS - Javascript - C++ - C - AWS - NGNIX </div>
+            <div className="strip1"ref={strip1}>{value.current && value.current.isMobile ? <Marquee >HTML - CSS - Javascript - C++ - C - AWS - NGNIX -&nbsp;</Marquee> : "HTML - CSS - Javascript - C++ - C - AWS - NGNIX"} </div>
             <div className="strip2"ref={strip2}>---- Here are my Skills ----</div>
-            <div className="strip3"ref={strip3}>DataStructures - Algorithms - CompilerDesign - Networking - Database</div>
-            <div className="strip4"ref={strip4}>Reactjs - Nodejs - Git - Github - Express JS - SCSS</div>
+            <div className="strip3"ref={strip3}>{value.current && value.current.isMobile ? <Marquee >DataStructures - Algorithms - CompilerDesign - Networking - Database -&nbsp;</Marquee> :"DataStructures - Algorithms - CompilerDesign - Networking - Database"} </div>
+            <div className="strip4"ref={strip4}>{value.current && value.current.isMobile ? <Marquee >Reactjs - Nodejs - Git - Github - Express JS - SCSS -</Marquee> : "Reactjs - Nodejs - Git - Github - Express JS - SCSS"}</div>
                 <div className="wrapper" onMouseEnter={textEnter} onMouseLeave={textLeave} >
                 *what the heck is a Software Engineer?
                 </div>
@@ -488,10 +542,11 @@ useLayoutEffect(() => {
        </div>
 
        <section className="footer" id="footer" ref={scollToRef}>
-        <div className="bigger-text"><div className="headline"  onMouseEnter={whiteEnter} onMouseLeave={textLeave} >Wanna <br /> be starting <br /> something ? <span> Feel free to reach out <br /> if you wanna collaborate with me <br /> or simply have a chat</span></div>
+        <div className="bigger-text">
+            <div className="headline"  onMouseEnter={whiteEnter} onMouseLeave={textLeave} >Wanna <br /> be starting <br /> something ? {value.current.isMobile ? <span> Feel free to reach out if you wanna <br /> collaborate with me or simply <br /> have a chat</span> : <span> Feel free to reach out <br /> if you wanna collaborate with me <br /> or simply have a chat</span>}</div>
         <div className="fullerene-div">
                  <div className="wrapper">
-                 <Sectionicon className="fullerene"></Sectionicon>
+                 {/* <Sectionicon className="fullerene"></Sectionicon> */}
                  </div>
         </div>
 
